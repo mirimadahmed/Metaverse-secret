@@ -112,11 +112,12 @@ const Navbar = () => {
                 {/* <NavLogo alt={"logo"} src={"config/images/logo.png"} onClick={toggleHome}></NavLogo> */}
             </NavLink>
           <NavMenu onClick={handleClick} click={click}>
-              <NavItems>
-                  <NavLink to="/" onClick={openSea}  spy={true} smooth={true} offset={-80} duration={500}>Opensea</NavLink> 
-                </NavItems>
               
-               
+                <NavItems style={{paddingLeft:"20px"}}>
+                  <NavLink to="/" onClick={()=>socialMedia("https://opensea.io/collection/metaversessecret")}>
+                    <NavIcon src={"config/images/opensea.png"}></NavIcon>
+                  </NavLink>
+                </NavItems>
                 <NavItems style={{paddingLeft:"20px"}}>
                   <NavLink to="/" onClick={()=>socialMedia("https://www.instagram.com/metaversessecret/")}>
                     <NavIcon src={"config/images/instagram.png"}></NavIcon>
