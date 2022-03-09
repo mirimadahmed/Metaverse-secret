@@ -127,8 +127,6 @@ function Home() {
   return (
     <>
   <s.Body>
-    
-    <Video/>
       <Navbar />
       <HeroSection />
 
