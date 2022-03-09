@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 // Used for wrapping a page component
 export const Body = styled.div`
-  /* background-image: url('config/images/bg.png') ;
-  background-size: cover;
-  background-position: 100% 100%; */
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -68,10 +65,17 @@ export const AmountContainer = styled.div`
 
 export const TextTitle = styled.p`
   color: ${({color}) => color ? color : "#fff"};
-  font-size: 2.2rem;
+  font-size: ${({size}) => size ? size+"rem" : "2.2rem"};
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.1;
   font-family: 'wonder';
+  text-align:center ;
+  color: #dbac36 ;
+
+  @media only screen and (max-width: 768px) {
+
+    font-size: 2.8rem;
+  }
 `;
 
 export const TextSubTitle = styled.p`
@@ -193,6 +197,7 @@ export const maxButton = styled.button`
   border-radius:10px;
   font-family: 'wonder';
   font-size:1.5rem;
+  color: #000 !important ;
 
   @media screen and (max-width: 768px) {
     position: relative;

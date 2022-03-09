@@ -61,7 +61,7 @@ display:none;
     position:absolute;
     top:0;
     right:0;
-    transform:translate(-100%,150%);
+    transform:translate(-100%,100%);
     font-size:1.5rem;
     cursor: pointer;
     color: #fff;

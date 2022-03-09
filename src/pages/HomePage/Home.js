@@ -143,7 +143,7 @@ function Home() {
         }}
       >
         <s.Mint>
-          <s.Image src={"config/images/mint_nft.png"} wid={70} />
+         <s.TextTitle size={5.0} >MINT NOW</s.TextTitle>
           <s.TextSubTitle size={1.4}>{6969-supply} of 6969 NFT's Available</s.TextSubTitle>
           <s.SpacerLarge />
           <s.SpacerLarge />
