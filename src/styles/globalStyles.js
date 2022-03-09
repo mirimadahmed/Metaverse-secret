@@ -183,6 +183,7 @@ export const connectButton = styled.button`
   font-size:1.5rem;
   border:1px solid #dbac36;
   border-radius:10px;
+  cursor: pointer;
 `;
 
 export const maxButton = styled.button`
