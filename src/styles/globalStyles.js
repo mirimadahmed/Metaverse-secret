@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link as LinkS } from "react-scroll";
 // Used for wrapping a page component
 export const Body = styled.div`
   width: 100%;
@@ -42,7 +42,7 @@ export const Container = styled.div`
   flex-direction: ${({ fd }) => (fd ? fd : "column")};
   justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
   align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  width: ${({ wid }) => (wid ? wid+"%" : "100%")};
+  width: ${({ wid }) => (wid ? wid + "%" : "100%")};
 
 
   @media screen and (max-width: 768px) {
@@ -57,37 +57,41 @@ export const AmountContainer = styled.div`
   flex-direction: ${({ fd }) => (fd ? fd : "column")};
   justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
   align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  width: ${({ wid }) => (wid ? wid+"%" : "100%")};
+  width: ${({ wid }) => (wid ? wid + "%" : "100%")};
 
 
   
 `;
 
 export const TextTitle = styled.p`
-  color: ${({color}) => color ? color : "#fff"};
-  font-size: ${({size}) => size ? size+"rem" : "2.2rem"};
+  color: ${({ color }) => color ? color : "#fff"};
+  font-size: ${({ size }) => size ? size + "rem" : "2.2rem"};
   font-weight: 500;
   line-height: 1.1;
   font-family: 'wonder';
   text-align:center ;
   color: #dbac36 ;
+  
 
   @media only screen and (max-width: 768px) {
 
-    font-size: 2.8rem;
+    font-size: 2.1rem;
+    line-height: 1.5;
   }
 `;
 
 export const TextSubTitle = styled.p`
-  color: ${({color}) => color ? color : "#fff"};
-  font-size: ${({size}) => size ? size+"rem" : "1.5rem"};
+  color: ${({ color }) => color ? color : "#fff"};
+  font-size: ${({ size }) => size ? size + "rem" : "1.5rem"};
   font-family: 'wonder';
-  text-align:${({align}) => align ? align : "center"};
+  text-align:${({ align }) => align ? align : "center"};
 `;
 
+
+
 export const TextDescription = styled.p`
-  color: ${({color}) => color ? color : "#fff"};
-  font-size: ${({size}) => size ? size : "1.5rem"};
+  color: ${({ color }) => color ? color : "#fff"};
+  font-size: ${({ size }) => size ? size : "1.5rem"};
   line-height: 1.6;
   font-family: 'wonder';
   text-align:center;
@@ -113,14 +117,14 @@ color:#e0e0e0;
 
 export const row = styled.div`
 display:grid;
-grid-template-columns: ${({ col }) => (col ? col+"%" + col+"%" : "50% 50%")};
-width : ${({ wid }) => (wid ? wid+"%" : "100%")};
+grid-template-columns: ${({ col }) => (col ? col + "%" + col + "%" : "50% 50%")};
+width : ${({ wid }) => (wid ? wid + "%" : "100%")};
 justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
 align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-column-gap:${({ gap }) => (gap ? gap+"%" : "20%")};
+column-gap:${({ gap }) => (gap ? gap + "%" : "20%")};
 
 @media screen and (max-width: 768px) {
-  grid-template-columns: ${({ col }) => (col ? col+"%" + col+"%" : "100%")};
+  grid-template-columns: ${({ col }) => (col ? col + "%" + col + "%" : "100%")};
 }`;
 
 export const Mint = styled.div`
@@ -148,7 +152,7 @@ export const CatDiv = styled.div`
 `;
 
 export const Image = styled.img`
-  width: ${({ wid }) => (wid ? wid+"%" : "100%")};
+  width: ${({ wid }) => (wid ? wid + "%" : "100%")};
   transition: width 0.5s;
   transition: height 0.5s;
   margin-top:20px;
@@ -159,7 +163,7 @@ export const Image = styled.img`
     margin-top:0;
 
   }
-`;  
+`;
 
 export const Line = styled.hr`
   width:100%;
@@ -173,8 +177,11 @@ export const FlexContainer = styled.div`
   align-items :${({ ai }) => (ai ? ai : "flex-start")};
   flex-wrap:wrap;
   margin-top : ${({ mt }) => (mt ? mt : "0")};
+`;
 
-
+export const FlexItem = styled.div`
+  flex:${({ flex }) => (flex ? flex : 0)};
+padding:10px ;
 `;
 
 export const connectButton = styled.button`
@@ -218,8 +225,27 @@ export const Layout = styled.div`
   left: 0;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0, 0.9);
-  
-  
-  
+`;
 
+export const NavIcon = styled.img`
+display:flex;
+align-items:center;
+justify-content:center;
+vertical-align:middle;
+margin:10px auto;
+width: ${({ wid }) => wid ? wid + "%" : '48px'};
+cursor: pointer;
+
+@media only screen and (max-width: 960px) {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  cursor: pointer;
+}
+`;
+
+export const NavLink = styled(LinkS)`
+
+cursor: pointer;
 `;

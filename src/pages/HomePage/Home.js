@@ -7,6 +7,7 @@ import * as s from "./../../styles/globalStyles";
 import Navbar from "../../components/Navbar/Navbar";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import Video from "../../components/Video/Video";
+import Social from "../../components/SocialMedia/Social";
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
@@ -16,10 +17,12 @@ function Home() {
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
   const [mintDone, setMintDone] = useState(false);
-  const [supply , setTotalSupply] = useState(0);
+  const [supply, setTotalSupply] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [mintAmount, setMintAmount] = useState(1);
   const [displayCost, setDisplayCost] = useState(0.069);
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -61,14 +64,15 @@ function Home() {
       })
       .then((receipt) => {
         setMintDone(true);
-        setFeedback(
-          `Done, the ${CONFIG.NFT_NAME} is yours!`
-        );
+        setFeedback(`Done, the ${CONFIG.NFT_NAME} is yours!`);
         setClaimingNft(false);
-        blockchain.smartContract.methods.totalSupply().call().then(res => {
-          setTotalSupply(res);
-        });
-        
+        blockchain.smartContract.methods
+          .totalSupply()
+          .call()
+          .then((res) => {
+            setTotalSupply(res);
+          });
+
         dispatch(fetchData(blockchain.account));
       });
   };
@@ -99,7 +103,9 @@ function Home() {
   const getData = async () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
-      const totalSupply =  await blockchain.smartContract.methods.totalSupply().call();
+      const totalSupply = await blockchain.smartContract.methods
+        .totalSupply()
+        .call();
       setTotalSupply(totalSupply);
     }
   };
@@ -113,7 +119,6 @@ function Home() {
     });
     const config = await configResponse.json();
     SET_CONFIG(config);
-
   };
 
   useEffect(() => {
@@ -124,135 +129,132 @@ function Home() {
     getData();
   }, [blockchain.account]);
 
+
   return (
     <>
-  <s.Body>
-      <Navbar />
-      <HeroSection />
+      <s.Body>
+        <s.FlexContainer
+          jc={"space-evenly"}
+          ai={"center"}
+          fd={"row"}
+          mt={"32vh"}
+        >
+          <s.Mint>
+            <s.TextTitle size={5.0} style={{ letterSpacing: "10px" }}>
+              MINT NOW
+            </s.TextTitle>
+            <s.TextSubTitle size={1.4}>
+              {6969 - supply} of 6969 NFT's Available
+            </s.TextSubTitle>
+            <s.SpacerLarge />
+            <s.SpacerLarge />
 
+            <s.FlexContainer fd={"row"} ai={"center"} jc={"space-between"}>
+              <s.TextTitle>Amount</s.TextTitle>
 
-     
-      <s.FlexContainer
-        flex={1}
-        jc={"space-evenly"}
-        ai={"center"}
-        fd={"row"}
-        mt={"-70vh"}
-        style={{
-          zIndex: "1",
-        }}
-      >
-        <s.Mint>
-         <s.TextTitle size={5.0} >MINT NOW</s.TextTitle>
-          <s.TextSubTitle size={1.4}>{6969-supply} of 6969 NFT's Available</s.TextSubTitle>
-          <s.SpacerLarge />
-          <s.SpacerLarge />
+              <s.AmountContainer ai={"center"} jc={"center"} fd={"row"}>
+                <StyledRoundButton
+                  style={{ lineHeight: 0.4 }}
+                  disabled={claimingNft ? 1 : 0}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    decrementMintAmount();
+                  }}
+                >
+                  -
+                </StyledRoundButton>
+                <s.SpacerMedium />
+                <s.TextDescription color={"#dbac36"} size={"2.5rem"}>
+                  {mintAmount}
+                </s.TextDescription>
+                <s.SpacerMedium />
+                <StyledRoundButton
+                  disabled={claimingNft ? 1 : 0}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    incrementMintAmount();
+                  }}
+                >
+                  +
+                </StyledRoundButton>
+              </s.AmountContainer>
 
-          <s.FlexContainer fd={"row"} ai={"center"} jc={"space-between"}>
-            <s.TextTitle>Amount</s.TextTitle>
-
-            <s.AmountContainer ai={"center"} jc={"center"} fd={"row"}>
-              <StyledRoundButton
-                style={{ lineHeight: 0.4 }}
-                disabled={claimingNft ? 1 : 0}
+              <s.maxButton
+                style={{ cursor: "pointer" }}
                 onClick={(e) => {
                   e.preventDefault();
-                  decrementMintAmount();
+                  maxNfts();
                 }}
               >
-                -
-              </StyledRoundButton>
-              <s.SpacerMedium />
-              <s.TextDescription color={"#dbac36"} size={"2.5rem"}>
-                {mintAmount}
-              </s.TextDescription>
-              <s.SpacerMedium />
-              <StyledRoundButton
-                disabled={claimingNft ? 1 : 0}
+                Max
+              </s.maxButton>
+            </s.FlexContainer>
+            
+            <s.TextSubTitle size={0.9} color={"#dbac36"} align={"right"}>
+              Max 5
+            </s.TextSubTitle>
+            <s.SpacerSmall />
+            <s.Line />
+            <s.SpacerLarge />
+            <s.FlexContainer fd={"row"} ai={"center"} jc={"space-between"}>
+              <s.TextTitle>Total</s.TextTitle>
+              <s.TextTitle color={"#dbac36"}>{displayCost}</s.TextTitle>
+            </s.FlexContainer>
+            <s.SpacerSmall />
+            <s.Line />
+            <s.SpacerSmall />
+
+            {blockchain.account !== "" && blockchain.smartContract !== null ? (
+              <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                <s.connectButton
+                  disabled={claimingNft ? 1 : 0}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    claimNFTs();
+                    getData();
+                  }}
+                >
+                  {" "}
+                  {claimingNft ? "Confirm Transaction in Wallet" : "Mint"}{" "}
+                  {mintDone ? feedback : ""}{" "}
+                </s.connectButton>{" "}
+              </s.Container>
+            ) : (
+              <s.connectButton
+                style={{
+                  textAlign: "center",
+                  color: "#dbac36",
+                  cursor: "pointer",
+                }}
                 onClick={(e) => {
                   e.preventDefault();
-                  incrementMintAmount();
+                  dispatch(connect());
+                  getData();
                 }}
               >
-                +
-              </StyledRoundButton>
-            </s.AmountContainer>
+                Connect to Wallet
+              </s.connectButton>
+            )}
 
-            <s.maxButton
-            style={{cursor:"pointer"}}
-              onClick={(e) => {
-                e.preventDefault();
-                maxNfts();
-              }}
-            >
-              Max
-            </s.maxButton>
-          </s.FlexContainer>
-          <s.TextSubTitle size={0.9} color={"#dbac36"} align={"right"}>
-            Max 5
-          </s.TextSubTitle>
-          <s.SpacerSmall />
-          <s.Line />
-          <s.SpacerLarge />
-          <s.FlexContainer fd={"row"} ai={"center"} jc={"space-between"}>
-            <s.TextTitle>Total</s.TextTitle>
-            <s.TextTitle color={"#dbac36"}>{displayCost}</s.TextTitle>
-          </s.FlexContainer>
-          <s.SpacerSmall />
-          <s.Line />
-          <s.SpacerSmall />
-
-          {blockchain.account !== "" && blockchain.smartContract !== null ? (
-          <s.Container ai={"center"} jc={"center"} fd={"row"}>
-            <s.connectButton
-              disabled={claimingNft ? 1 : 0}
-              onClick={(e) => {
-                e.preventDefault();
-                claimNFTs();
-                getData();
-              }}
-            >
-              {" "}
-              {claimingNft ? "Confirm Transaction in Wallet" : "Mint"}{" "}
-              {mintDone ? feedback : ""}{" "}
-            </s.connectButton>{" "}
-          </s.Container>
-          ) : (
-            <s.connectButton
-                      style={{
-                        textAlign: "center",
-                        color: "#dbac36",
-                        cursor:"pointer",
-                      }}
-                      onClick={(e) => {
-                          e.preventDefault();
-                          dispatch(connect());
-                          getData();
-                        }}
-                    >
-                      Connect to Wallet
-                    </s.connectButton>
-          )}
-
-          {blockchain.errorMsg !== "" ? (
-            <s.connectButton
-                      style={{
-                        textAlign: "center",
-                        color: "#dbac36",
-                        cursor:"pointer",
-                      }}
-                    >
-                       {feedback}
-                    </s.connectButton>
-          ) : ("")}
-
-        </s.Mint>
-
-   
-      </s.FlexContainer>
+            {blockchain.errorMsg !== "" ? (
+              <s.connectButton
+                style={{
+                  textAlign: "center",
+                  color: "#dbac36",
+                  cursor: "pointer",
+                }}
+              >
+                {feedback}
+              </s.connectButton>
+            ) : (
+              ""
+            )}
+          </s.Mint>
+        </s.FlexContainer>
+        <s.SpacerLarge/>
+        <Social/>
       </s.Body>
     </>
-    
   );
 }
 
