@@ -20,16 +20,17 @@ body{
 .flexContainer{
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:space-evenly;
   vertical-align:middle;
   margin:10px auto;
+  width: 40%;
 }
 
 .flexItems{
   width: 5%;
 }
 .flexItems > a > img{
-  width: 60%;
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
