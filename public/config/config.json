@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x2Fbf9e5915137e1FD3da0B941295168b61CfD7dB",
-  "SCAN_LINK": "https://etherscan.io/address/0x2Fbf9e5915137e1FD3da0B941295168b61CfD7dB",
+  "CONTRACT_ADDRESS": "0x944644115ed0d424a8384fb4ae8ada3b7b472f9e",
+  "SCAN_LINK": "https://etherscan.io/address/0x944644115ed0d424a8384fb4ae8ada3b7b472f9e",
   "NETWORK": {
     "NAME": "Ethereum",
     "SYMBOL": "ETH",
-    "ID": 4
+    "ID": 1
   },
   "NFT_NAME": "Metaverse’s Secret",
   "SYMBOL": "JC",
