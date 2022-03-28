@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0x944644115ed0d424a8384fb4ae8ada3b7b472f9e",
-  "SCAN_LINK": "https://etherscan.io/address/0x944644115ed0d424a8384fb4ae8ada3b7b472f9e",
+  "CONTRACT_ADDRESS": "0x3985E7b1EbAF54c97755d7fB4ED9b2B1f29E38dE",
+  "SCAN_LINK": "https://etherscan.io/address/0x3985E7b1EbAF54c97755d7fB4ED9b2B1f29E38dE",
   "NETWORK": {
-    "NAME": "Ethereum",
+    "NAME": "Rinkeby",
     "SYMBOL": "ETH",
-    "ID": 1
+    "ID": 4
   },
-  "NFT_NAME": "Metaverse’s Secret",
-  "SYMBOL": "JC",
-  "MAX_SUPPLY": 6969 ,
-  "WEI_COST": 69000000000000000,
-  "DISPLAY_COST": 0.069,
+  "NFT_NAME": "HYYP CARTEL",
+  "SYMBOL": "HYYP",
+  "MAX_SUPPLY": 9999 ,
+  "WEI_COST": 70000000000000000,
+  "DISPLAY_COST": 0.07,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/mutant-age-camel-club",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/hyyp-cartel",
   "SHOW_BACKGROUND": true
 }

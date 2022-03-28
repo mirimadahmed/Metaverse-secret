@@ -1,13 +1,12 @@
 import styled from "styled-components";
 export const StyledRoundButton = styled.button`
-  padding: 10px;
+  padding: 2vh;
   border: none;
-  padding: 10px;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #dbac36;
-  width: 10px;
-  height: 10px;
+  color: #ffffff;
+  width: 3vh;
+  height: 3vh;
   cursor: pointer;
   display: flex;
   align-items: center;

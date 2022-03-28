@@ -20,7 +20,7 @@ function Home() {
   const [supply, setTotalSupply] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [mintAmount, setMintAmount] = useState(1);
-  const [displayCost, setDisplayCost] = useState(0.069);
+  const [displayCost, setDisplayCost] = useState(0.07);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [CONFIG, SET_CONFIG] = useState({
@@ -88,16 +88,16 @@ function Home() {
 
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 5) {
-      newMintAmount = 5;
+    if (newMintAmount > 2) {
+      newMintAmount = 2;
     }
     setMintAmount(newMintAmount);
     setDisplayCost(parseFloat(CONFIG.DISPLAY_COST * newMintAmount).toFixed(3));
   };
 
   const maxNfts = () => {
-    setMintAmount(5);
-    setDisplayCost(parseFloat(CONFIG.DISPLAY_COST * 5).toFixed(3));
+    setMintAmount(2);
+    setDisplayCost(parseFloat(CONFIG.DISPLAY_COST * 2).toFixed(3));
   };
 
   const getData = async () => {
@@ -133,18 +133,19 @@ function Home() {
   return (
     <>
       <s.Body>
+        <Navbar />
         <s.FlexContainer
           jc={"space-evenly"}
           ai={"center"}
           fd={"row"}
-          mt={"32vh"}
+          mt={"3vh"}
         >
           <s.Mint>
-            <s.TextTitle size={5.0} style={{ letterSpacing: "10px" }}>
+            <s.TextTitle style={{ letterSpacing: "-0.01em", textAlign: "left", lineHeight: "136%", fontSize: "51.388px", fontWeight: "700" }}>
               MINT NOW
             </s.TextTitle>
-            <s.TextSubTitle size={1.4}>
-              {6969 - supply} of 6969 NFT's Available
+            <s.TextSubTitle style={{textAlign:"left"}}>
+              {9999 - supply} of 9999 NFT's Available
             </s.TextSubTitle>
             <s.SpacerLarge />
             <s.SpacerLarge />
@@ -154,7 +155,7 @@ function Home() {
 
               <s.AmountContainer ai={"center"} jc={"center"} fd={"row"}>
                 <StyledRoundButton
-                  style={{ lineHeight: 0.4 }}
+                  style={{ lineHeight: 0.4, fontWeight: "400"}}
                   disabled={claimingNft ? 1 : 0}
                   onClick={(e) => {
                     e.preventDefault();
@@ -164,11 +165,12 @@ function Home() {
                   -
                 </StyledRoundButton>
                 <s.SpacerMedium />
-                <s.TextDescription color={"#dbac36"} size={"2.5rem"}>
+                <s.TextDescription color={"#ffffff"} size={"50.69px"} style={{fontWeight: "800", border: "1px solid #fff"}}>
                   {mintAmount}
                 </s.TextDescription>
                 <s.SpacerMedium />
                 <StyledRoundButton
+                  style={{ lineHeight: 0.4, fontWeight: "400"}}
                   disabled={claimingNft ? 1 : 0}
                   onClick={(e) => {
                     e.preventDefault();
@@ -178,27 +180,18 @@ function Home() {
                   +
                 </StyledRoundButton>
               </s.AmountContainer>
-
-              <s.maxButton
-                style={{ cursor: "pointer" }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  maxNfts();
-                }}
-              >
-                Max
-              </s.maxButton>
+              <s.TextSubTitle size={1.5} style={{ fontWeight: 700 }} color={"#ffffff"} align={"right"}>
+                Max 2
+              </s.TextSubTitle>
             </s.FlexContainer>
-            
-            <s.TextSubTitle size={0.9} color={"#dbac36"} align={"right"}>
-              Max 5
-            </s.TextSubTitle>
+
+
             <s.SpacerSmall />
             <s.Line />
             <s.SpacerLarge />
             <s.FlexContainer fd={"row"} ai={"center"} jc={"space-between"}>
               <s.TextTitle>Total</s.TextTitle>
-              <s.TextTitle color={"#dbac36"}>{displayCost}</s.TextTitle>
+              <s.TextTitle style={{ fontWeight: 700, fontSize: "50.69px" }}>{displayCost}</s.TextTitle>
             </s.FlexContainer>
             <s.SpacerSmall />
             <s.Line />
@@ -223,7 +216,7 @@ function Home() {
               <s.connectButton
                 style={{
                   textAlign: "center",
-                  color: "#dbac36",
+                  color: "#ffffff",
                   cursor: "pointer",
                 }}
                 onClick={(e) => {
@@ -240,7 +233,7 @@ function Home() {
               <s.connectButton
                 style={{
                   textAlign: "center",
-                  color: "#dbac36",
+                  color: "#ffffff",
                   cursor: "pointer",
                 }}
               >
@@ -251,8 +244,8 @@ function Home() {
             )}
           </s.Mint>
         </s.FlexContainer>
-        <s.SpacerLarge/>
-        <Social/>
+        {/* <s.SpacerLarge /> */}
+        {/* <Social/> */}
       </s.Body>
     </>
   );

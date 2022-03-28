@@ -11,6 +11,7 @@ import {
   NavMenu,
   NavItems,
   NavLink,
+  NavItem1,
   StyledButton,
   StyledButtonMobile,
   NavIcon,
@@ -104,8 +105,14 @@ const Navbar = () => {
     <>
       <Nav scrollNav={scrollNav}>
         <NavContainer>
+          <NavItem1>
+          <NavLogo src={"config/images/hyyp-logo.svg"}></NavLogo>
+          </NavItem1>
+         
+
+
           <NavMenu onClick={handleClick} click={click}>
-            <NavItems style={{ paddingLeft: "20px" }}>
+            <NavItems>
               <NavLink
                 to="/"
                 onClick={() =>
@@ -115,17 +122,7 @@ const Navbar = () => {
                 <NavIcon src={"config/images/opensea.png"}></NavIcon>
               </NavLink>
             </NavItems>
-            <NavItems style={{ paddingLeft: "20px" }}>
-              <NavLink
-                to="/"
-                onClick={() =>
-                  socialMedia("https://www.instagram.com/metaversessecret/")
-                }
-              >
-                <NavIcon src={"config/images/instagram.png"}></NavIcon>
-              </NavLink>
-            </NavItems>
-            <NavItems style={{ paddingLeft: "0px" }}>
+            <NavItems>
               <NavLink
                 to="/"
                 onClick={() =>
@@ -135,12 +132,18 @@ const Navbar = () => {
                 <NavIcon src={"config/images/discord.png"}></NavIcon>
               </NavLink>
             </NavItems>
-            <NavItems style={{ paddingLeft: "0px" }}>
+            <NavItems>
               <NavLink
                 to="/"
                 onClick={() => socialMedia("https://twitter.com/MVSecretNFT")}
               >
                 <NavIcon src={"config/images/twitter.png"}></NavIcon>
+              </NavLink>
+            </NavItems>
+            <NavItems style={{ color: "white" }}>
+              <NavLink
+              >
+                MINT
               </NavLink>
             </NavItems>
           </NavMenu>

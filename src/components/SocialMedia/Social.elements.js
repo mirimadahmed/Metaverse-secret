@@ -9,10 +9,10 @@ export const NavLink = styled(LinkS)`
     padding:0 1rem;
     display:flex;
     cursor:pointer;
-    font-family: 'wonder';
+    font-family: 'Open Sans', sans-serif;
     font-size:1.5rem;
     &:hover{
-      color:#dbac36;
+      color:#ffffff;
     }
     &:active{
       border-bottom: 3px solid #01bf71;

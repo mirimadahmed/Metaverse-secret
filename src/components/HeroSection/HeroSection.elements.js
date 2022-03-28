@@ -74,7 +74,7 @@ export const HeroP = styled.p`
     font-size:1.8rem;
     color:#fff;
     text-align:center;
-    font-family: 'wonder';
+    font-family: 'Open Sans', sans-serif;
     width:90%;
 
     @media screen and (max-width: 768px) {
